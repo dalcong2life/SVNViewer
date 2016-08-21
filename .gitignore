@@ -1,0 +1,12 @@
+.idea/
+venv*/
+app/static/libs/
+app/static/node_modules/
+svn-*
+local_*
+study.txt
+*.pyc
+local_history.ini
+database.db
+.DS_Store
+app/memo/resource/database/database.db
