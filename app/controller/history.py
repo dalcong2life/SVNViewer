@@ -2,7 +2,7 @@
 
 from flask import render_template, request, session, g, url_for, redirect, jsonify
 
-from app.blueprint import blueprint_app
+from app.config.blueprint import blueprint_app
 from app.config.database import query_db
 
 

@@ -3,7 +3,6 @@
 import logging
 from logging import getLogger, handlers, Formatter
 
-
 class Log:
     __log_level_map = {
         'debug': logging.DEBUG,

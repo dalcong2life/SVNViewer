@@ -1,8 +1,8 @@
 -- 코드 테이블
 CREATE TABLE IF NOT EXISTS CODE (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
-  type        STRING NOT NULL,
-  name        STRING NOT NULL,
+  type        TEXT NOT NULL,
+  name        TEXT NOT NULL,
   create_date DATETIME,
   modify_date DATETIME
 );
@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS SVN_INFO (
   create_date      DATETIME,
   modify_date      DATETIME
 );
-
 
 CREATE TABLE IF NOT EXISTS SVN_HISTORY (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,

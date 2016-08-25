@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import os
 from flask import Flask, render_template
 
 
@@ -31,12 +32,19 @@ def create_app(config_filepath='resource/config.cfg'):
     from app.config.logger import Log
     Log.init()
 
+    # DB 초기화
+    from app.config.database import DBManager
+    db_url = os.path.join(app.root_path, app.config['DB_URL'])
+    DBManager.init(db_url)
+
     # 뷰 함수 모듈은 어플리케이션 객체 생성하고 블루프린트 등록전에
     # 뷰 함수가 있는 모듈을 임포트해야 해당 뷰 함수들을 인식할 수 있음
     from app.controller import *
 
     # 블루프린트 등록
-    from app.blueprint import blueprint_app
+    from app.config.blueprint import blueprint_app
+    Log.info('static folder : %s' % blueprint_app.static_folder)
+    Log.info('template folder : %s' % blueprint_app.template_folder)
     app.register_blueprint(blueprint_app)
 
 
