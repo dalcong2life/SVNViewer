@@ -31,11 +31,9 @@ def teardown_request(exception):
 
 @blueprint_app.route('/')
 def index():
-    print "$$$$$$$$$$$$$$$$$$$$$$$$$$"
     if g.user:
         return redirect(url_for('app.svn_repository'))
 
-    print "$$$$$$$$$$$$$$$$$$$$$$$$$$"
     return redirect(url_for('app.login'))
 
 

@@ -7,6 +7,6 @@ local_*
 study.txt
 *.pyc
 local_history.ini
-database.db
+app.db
 .DS_Store
-app/memo/resource/database/database.db
+
