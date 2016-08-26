@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS USER (
   email       TEXT NOT NULL UNIQUE,
   username    TEXT NOT NULL,
   pw_hash     TEXT NOT NULL,
+  role        INTEGER DEFAULT 1, -- 1: 일반, 2: 확장 코드, 3: 슈퍼 유저
   bugzilla_id TEXT,
   bugzilla_pw TEXT,
   create_date DATETIME,
@@ -22,10 +23,13 @@ CREATE TABLE IF NOT EXISTS USER (
 -- SVN 설정 정보 테이블
 CREATE TABLE IF NOT EXISTS SVN_INFO (
   s_path_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+  s_base_url       TEXT NOT NULL,
   s_path_url       TEXT NOT NULL,
-  s_start_revision INTEGER,
+  s_start_revision INTEGER NOT NULL,
   s_last_revision  INTEGER,
-  active           INTEGER,
+  s_userid         TEXT NOT NULL,
+  s_user_pwd       TEXT NOT NULL,
+  active           INTEGER,  -- 0 or 1
   product_id       TEXT NOT NULL,
   desc             TEXT,
   created_userid   TEXT,
@@ -33,6 +37,7 @@ CREATE TABLE IF NOT EXISTS SVN_INFO (
   modify_date      DATETIME
 );
 
+-- SVN Diff 정보 테이블
 CREATE TABLE IF NOT EXISTS SVN_HISTORY (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   s_path_id  INTEGER,
